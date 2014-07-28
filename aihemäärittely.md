@@ -7,10 +7,10 @@ palikoiden poistaminen saa aikaan toisen vähintään kolmen yhdistelmän. Pelaa
 lisäksi pelaaja saa myös lisää aikaa. Mitä enemmän aikaa kuluu, sitä tiuhempaan tahtiin palikoita nousee ruuudukon alalaidasta. Peli päättyy joko ajan loppumiseen, tai kun palikat saavuttavat
 ruudukon ylälaidan. Pelin loputtua pelaaja näkee pistemääränsä, joka asetetaan highscore listaan.
 
-### __Käyttäjät: __
+### __Käyttäjät:__
  Pelaaja
 
-### __Pelaajan toiminnot: __
+### __Pelaajan toiminnot:__
 * Pelin aloittaminen
   * Palikoiden paikan vaihtaminen
   * Valikkoon palaaminen

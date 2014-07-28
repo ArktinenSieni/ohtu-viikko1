@@ -4,5 +4,6 @@
 * Netbeans rojekti
 * aiheenmäärittely
 * rakenteen suunnittelua ja hahmottelemista
+* logiikan aloittaminen
 
-Kesto n. 3h
+Klo 15:00-17:20

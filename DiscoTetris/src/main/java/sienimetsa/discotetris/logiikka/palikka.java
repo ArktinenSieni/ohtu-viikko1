@@ -7,10 +7,10 @@ public class palikka {
     private int pysty;
     private int vaaka;
     
-    public palikka(int vari, int pysty, int vaaka) {
-        this.vari = vari;
-        this.pysty = pysty;
-        this.vaaka = vaaka;
+    public palikka() {
+        this.vari = 0;
+        this.pysty = 0;
+        this.vaaka = 0;
     }
 
     public int getVari() {
@@ -19,6 +19,11 @@ public class palikka {
     
     public void setVari(int parametri) {
         this.vari = vari;
+    }
+    
+    public void asetaKoordinaatti(int vaaka, int pysty) {
+        this.vaaka = vaaka;
+        this.pysty = pysty;
     }
 
     public int getPysty() {
@@ -43,4 +48,6 @@ public class palikka {
         setVari(vaihdettava.getVari());
         vaihdettava.setVari(apu);
     }
+    
+    
 }

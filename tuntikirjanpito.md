@@ -7,3 +7,8 @@
 * logiikan aloittaminen
 
 Klo 15:00-17:20
+
+###__30.7.2014__
+* Screw gravity! Imma making mah own >:c aka. palikoiden putoamisen logiikkaa
+
+Klo 18:00-19:00

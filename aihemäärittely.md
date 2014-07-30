@@ -20,18 +20,21 @@ ruudukon ylälaidan. Pelin loputtua pelaaja näkee pistemääränsä, joka asete
 * Pelin lopettaminen
 
 ### __Satunnaisia merkintöjä:__
-* Ajatuksena on tehdä taulukko, joka periaatteessa on täynnä palikoita. Tyhjät kohdat ovat toisin sanoen tyhjiä palikoita.
+* Ajatuksena on tehdä taulukko, joka periaatteessa on täynnä ~~palikoita~~. Tyhjät kohdat ovat toisin sanoen tyhjiä palikoita.
 Taulukosta lienee helppo graafiseen käyttöliittymän lukea pelin tila.
+  * palikoiden sijaan ajattelen kuutiot jonkinlaisina valoina. "kuutiot" liikkuvat siten että palikat vaihtavat
+keskenään väriä. Eräänlaisia diskovaloja valitsemani nimen mukaan
 * Palikoiden logiikka
 * Käyttöliittymä
 * _Aikalaskuri_
 * Highscore-lista
 * Vaihtuuko palikoiden paikat kahta vierekkäistä palaa painamalla, vai onnistuukohan kursorin väsääminen innoittavan pelin tyyliin?
 * Valitut värit:
-  * sininen
-  * keltainen
-  * punainen
-  * violetti
-  * valkoinen
-* Seuraavana: tarkastaja!
+  * sininen 1
+  * keltainen 2
+  * punainen 3
+  * violetti 4
+  * valkoinen 5
+* Tarkastaja
+* ~~Gravity~~
 

@@ -36,5 +36,7 @@ keskenään väriä. Eräänlaisia diskovaloja valitsemani nimen mukaan
   * violetti 4
   * valkoinen 5
 * Tarkastaja
-* ~~Gravity~~
+  * joka tarkastaa tyhjät välit
+  * joka tarkastaa että onko vähintään kolmen yhdistelmä
+
 

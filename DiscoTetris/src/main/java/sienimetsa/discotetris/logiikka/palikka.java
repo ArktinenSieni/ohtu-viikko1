@@ -4,13 +4,11 @@ import java.util.Random;
 
 public class palikka {
     private int vari;
-    private int pysty;
-    private int vaaka;
+    
+    // Järkkää jossai vaihees et olis numeroiden sijaan numero. Vastaava ku korttihommeli @ ohja
     
     public palikka() {
         this.vari = 0;
-        this.pysty = 0;
-        this.vaaka = 0;
     }
 
     public int getVari() {
@@ -18,20 +16,9 @@ public class palikka {
     }
     
     public void setVari(int parametri) {
-        this.vari = vari;
-    }
-    
-    public void asetaKoordinaatti(int vaaka, int pysty) {
-        this.vaaka = vaaka;
-        this.pysty = pysty;
-    }
-
-    public int getPysty() {
-        return pysty;
-    }
-
-    public int getVaaka() {
-        return vaaka;
+        if (parametri >= 0 && parametri <= 5) {
+        this.vari = parametri;
+        }
     }
     
     public void arvoVari() {

@@ -17,3 +17,7 @@ Klo 18:00-19:00
 * testejä
 * alustava luokkakaavio
 * ohjelman rakenteen hahmottamista
+* herjaa "out of bounds" exceptionia. En saa buildattua joten en saa pit raporttiakaan tehtyä. Täytynee vielä asiaa tarkastella jos ehtii,
+ ennen kuin pyyhettä kehään heittää
+
+Klo 19:40-23:00

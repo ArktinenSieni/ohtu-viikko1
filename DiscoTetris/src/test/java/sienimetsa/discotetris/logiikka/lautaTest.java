@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sienimetsa.discotetris.logiikka;
 
 import org.junit.After;
@@ -18,27 +17,68 @@ import static org.junit.Assert.*;
  * @author mcraty
  */
 public class lautaTest {
-    
+
+    public lauta testiLauta;
+
     public lautaTest() {
-    
+
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
-        
+
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        
+        testiLauta = new lauta();
     }
-    
+
     @After
     public void tearDown() {
+    }
+
+    @Test
+    public void rivinGenerointi() {
+        this.testiLauta.generoiRivi();
+
+        for (int i = 0; i < 5; i++) {
+
+            assertTrue(testiLauta.getLauta()[i][0].getVari() != null);
+
+        }
+
+    }
+
+    @Test
+    public void vaihtoKohdeTyhja() {
+        testiLauta.getLauta()[1][0] = new palikka(Vari.SININEN);
+        testiLauta.vaihto(1, 0, 1, 1);
+        assertEquals(Vari.SININEN, testiLauta.getLauta()[1][1].getVari());
+
+    }
+
+    @Test
+    public void vaihtoAlkuTyhja() {
+        testiLauta.getLauta()[2][1] = new palikka(Vari.KELTAINEN);
+        testiLauta.vaihto(2, 0, 2, 1);
+        assertEquals(Vari.KELTAINEN, testiLauta.getLauta()[2][0].getVari());
+
+    }
+
+    @Test
+    public void vaihtoMolemmissaPalikat() {
+        testiLauta.getLauta()[3][0] = new palikka(Vari.PUNAINEN);
+        testiLauta.getLauta()[3][1] = new palikka(Vari.VIOLETTI);
+        testiLauta.vaihto(3, 0, 3, 1);
+
+        assertEquals(Vari.VIOLETTI, testiLauta.getLauta()[3][0]);
+        assertEquals(Vari.PUNAINEN, testiLauta.getLauta()[3][1]);
+        
     }
 
     // TODO add test methods here.
@@ -46,93 +86,4 @@ public class lautaTest {
     //
     // @Test
     // public void hello() {}
-    
-    @Test
-    public void aloituksenGenerointi() {
-        lauta testilauta = new lauta();
-        palikka[][] apulauta = testilauta.getAreena();
-        
-        testilauta.generoiAloitus();
-        
-        boolean onkoVareja = false;
-        
-        for (int i = 1; i < 2; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (apulauta[i][j].getVari() != 0) {
-                    onkoVareja = true;
-                }
-            }
-        }
-        
-        assertTrue(onkoVareja);
-                
-    }
-    
-    @Test
-    public void tyhjennysToimii() {
-        lauta testilauta = new lauta();
-        palikka[][] apulauta = testilauta.getAreena();
-        
-        testilauta.generoiAloitus();
-        testilauta.tyhjenna();
-        
-        boolean onkoVareja = false;
-        
-        for (int i = 1; i < 2; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (apulauta[i][j].getVari() != 0) {
-                    onkoVareja = true;
-                }
-            }
-        }
-        
-        assertFalse(onkoVareja);
-    }
-    
-    @Test
-    public void uudessaRivissaEiTyhjia() {
-        lauta testilauta = new lauta();
-        palikka[][] apulauta = testilauta.getAreena();
-        
-        boolean onkoTyhjia = false;
-        
-        for (int i = 0; i < 15; i++) {
-            testilauta.generoiUusiRivi();
-            for (int j = 0; j < 5; j++) {
-                palikka kuutio = apulauta[j][0];
-                
-                if (kuutio.getVari() == 0) {
-                    onkoTyhjia = true;
-                }
-            }
-            
-            testilauta.tyhjenna();
-        }
-        
-        assertFalse(onkoTyhjia);
-    }
-    
-    @Test
-    public void palikkaPutoaa() {
-        lauta testilauta = new lauta();
-        palikka[][] apulauta = testilauta.getAreena();
-        
-        apulauta[3][6].setVari(1);
-        
-        testilauta.pudotaPalikka(3, 6, 5);
-        
-        assertTrue(apulauta[3][6].getVari() == 0 && apulauta[3][6].getVari() == 1);
-    }
-    
-    public void palikkaEiPutoaYli() {
-        lauta testilauta = new lauta();
-        palikka[][] apulauta = testilauta.getAreena();
-        
-        apulauta[3][6].setVari(1);
-        
-        testilauta.pudotaPalikka(3, 6, 6);
-        
-        assertTrue(apulauta[3][6].getVari() == 1 && apulauta[3][0].getVari() == 0);
-    }
-    
 }

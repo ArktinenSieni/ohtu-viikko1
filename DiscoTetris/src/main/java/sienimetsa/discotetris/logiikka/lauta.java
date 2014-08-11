@@ -9,7 +9,11 @@ public class lauta {
     public lauta() {
         pelilauta = new palikka[5][13];
         
-        
+        for (palikka[] object : pelilauta) {
+            for (palikka object1 : object) {
+                object1 = new palikka(Vari.TYHJA);
+            }
+        }
 
     }
 
@@ -29,26 +33,12 @@ public class lauta {
     }
     
     public void vaihto(int alkuX, int alkuY, int kohdeX, int kohdeY) {
-        if (pelilauta[alkuX][alkuY] == null && pelilauta[kohdeX][kohdeY] == null) {
-            return;
-        }
         
-        if (pelilauta[alkuX][alkuY] == null && pelilauta[kohdeX][kohdeY] != null) {
-            pelilauta[alkuX][alkuY] = pelilauta[kohdeX][kohdeY];
-            pelilauta[kohdeX][kohdeY] = null;
-        }
-        
-        if (pelilauta[kohdeX][kohdeY] == null && pelilauta[alkuX][alkuY] != null) {
-            pelilauta[kohdeX][kohdeY] = pelilauta[alkuX][alkuY];
-            pelilauta[alkuX][alkuY] = null;
-        }
-        
-        if (pelilauta[alkuX][alkuY] != null && pelilauta[kohdeX][kohdeY] != null) {
             palikka apu = pelilauta[alkuX][alkuY];
             
             pelilauta[alkuX][alkuY] = pelilauta[kohdeX][kohdeY];
             pelilauta[kohdeX][kohdeY] = apu;
-        }
+        
     }
     
     public palikka[][] getLauta() {

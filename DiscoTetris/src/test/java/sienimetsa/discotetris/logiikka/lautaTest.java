@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sienimetsa.discotetris.logiikka;
 
 import org.junit.After;
@@ -46,10 +42,8 @@ public class lautaTest {
     public void rivinGenerointi() {
         this.testiLauta.generoiRivi();
 
-        for (int i = 0; i < 5; i++) {
-
-            assertTrue(testiLauta.getLauta()[i][0].getVari() != null);
-
+        for (int i = 0; i < this.testiLauta.getLauta().length; i++) {
+            assertTrue(testiLauta.getLauta()[i][0].getVari() != Vari.TYHJA);
         }
 
     }
@@ -66,6 +60,52 @@ public class lautaTest {
         assertEquals(Vari.PUNAINEN, testiLauta.getLauta()[3][1].getVari());
         
     }
+    
+    @Test
+    public void rivinTyonto() {
+        testiLauta.alusta();
+        
+        this.rivinGenerointi();
+        
+        this.testiLauta.tyonnaRivi();
+        
+        for (int i = 0; i < this.testiLauta.getLauta().length; i++) {
+            assertTrue(this.testiLauta.getLauta()[i][1].getVari() != Vari.TYHJA);
+        }
+    }
+    
+    @Test
+    public void palikanPudotus() {
+        testiLauta.alusta();
+        
+        testiLauta.generoiRivi();
+        
+        for (int i = 0; i < 3; i++) {
+            testiLauta.tyonnaRivi();
+        }
+        
+        testiLauta.pudotaPalikka(0, 3);
+        
+        testiLauta.pudotaPalikka(5, 3);
+        
+        assertTrue(testiLauta.getLauta()[5][1].getVari() != Vari.TYHJA);
+        assertTrue(testiLauta.getLauta()[0][1].getVari() != Vari.TYHJA);
+    }
+    
+    @Test
+    public void painovoima() {
+        this.palikanPudotus();
+        
+        testiLauta.painovoima();
+        
+        for (int i = 0; i < testiLauta.getLauta().length; i++) {
+            assertEquals(Vari.TYHJA, testiLauta.getLauta()[i][0].getVari());
+            assertEquals(Vari.TYHJA, testiLauta.getLauta()[i][2].getVari());
+            assertFalse(testiLauta.getLauta()[i][1].getVari() == Vari.TYHJA);
+        }
+       
+    }
+    
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

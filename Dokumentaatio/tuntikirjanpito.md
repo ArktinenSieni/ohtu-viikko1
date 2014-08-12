@@ -21,3 +21,8 @@ Klo 18:00-19:00
  ennen kuin pyyhettä kehään heittää
 
 Klo 19:40-23:00
+
+###__11.8.2014__
+
+* Logiikka alusta, selkeämmäksi
+* virheiden korjausta, buildaaminen onnistuu

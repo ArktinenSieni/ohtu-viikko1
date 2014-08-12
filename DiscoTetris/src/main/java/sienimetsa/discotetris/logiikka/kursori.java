@@ -35,7 +35,7 @@ public class kursori {
     }
 
     public void oikea() {
-        if (sijaintiX < pelilauta.getLauta()[0].length - 2) {
+        if (sijaintiX < pelilauta.getLauta().length - 2) {
             sijaintiX++;
         }
     }

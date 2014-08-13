@@ -38,3 +38,6 @@
 * Sitten alkaakin haasteet, seuraavaksi aiheena:
   * Peli-luokka, joka pyörittää peliä
   * käyttöliittymä
+
+####__16:00-17:30__
+* käyttöliittymään liittyvän infon keräämistä ja suunnittelua

@@ -5,13 +5,23 @@ import java.util.Random;
 public class lauta {
 
     private palikka[][] pelilauta;
+    final int x;
+    final int y;
 
     public lauta() {
         pelilauta = new palikka[6][14];
-        
+        x = pelilauta.length;
+        y = pelilauta[0].length;
         this.alusta();
         
+    }
+    
+    public int maxX() {
+        return x;
+    }
 
+    public int maxY() {
+        return y;
     }
     
     public void alusta() {
@@ -75,6 +85,10 @@ public class lauta {
     
     public void poistaPalikka(int x, int y) {
         this.pelilauta[x][y].setVari(Vari.TYHJA);
+    }
+    
+    public void poistaPalikka(palikka palikka) {
+        palikka.setVari(Vari.TYHJA);
     }
 
     public palikka[][] getLauta() {

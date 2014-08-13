@@ -29,3 +29,12 @@
 * Logiikka etenee
 * Testejä
 * pit-raportti, check
+
+###__13.8.2014 10:00-13:00__
+
+* Logiikka paketti kutakuinkin valmis
+* Testejä
+* Tarkentunut luokkakaavio
+* Sitten alkaakin haasteet, seuraavaksi aiheena:
+  * Peli-luokka, joka pyörittää peliä
+  * käyttöliittymä

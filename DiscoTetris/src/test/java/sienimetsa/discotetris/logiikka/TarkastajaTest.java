@@ -1,5 +1,9 @@
 package sienimetsa.discotetris.logiikka;
 
+import diskotetris.logiikka.Tarkastaja;
+import diskotetris.logiikka.Palikka;
+import diskotetris.logiikka.Lauta;
+import diskotetris.logiikka.Vari;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,7 +17,7 @@ import org.junit.Test;
  * @author matti
  */
 public class TarkastajaTest {
-    public lauta testilauta;
+    public Lauta testilauta;
     public Tarkastaja testitarkastaja;
     
     public TarkastajaTest() {
@@ -30,7 +34,7 @@ public class TarkastajaTest {
     
     @Before
     public void setUp() {
-        testilauta = new lauta();
+        testilauta = new Lauta();
         testitarkastaja = new Tarkastaja(testilauta);
     }
     
@@ -45,7 +49,7 @@ public class TarkastajaTest {
             testilauta.getLauta()[0][i].setVari(Vari.PUNAINEN);
         }
         
-        ArrayList<palikka> lista = testitarkastaja.tarkastaYlos(0, 1);
+        ArrayList<Palikka> lista = testitarkastaja.tarkastaYlos(0, 1);
         
         assertEquals(4, lista.size());
     }
@@ -58,8 +62,8 @@ public class TarkastajaTest {
             testilauta.getLauta()[0][i].setVari(Vari.PUNAINEN);
         }
         
-        ArrayList<palikka> lista1 = testitarkastaja.tarkastaYlos(0, 1);
-        ArrayList<palikka> lista2 = testitarkastaja.tarkastaYlos(0, 2);
+        ArrayList<Palikka> lista1 = testitarkastaja.tarkastaYlos(0, 1);
+        ArrayList<Palikka> lista2 = testitarkastaja.tarkastaYlos(0, 2);
         
         assertEquals(1, lista1.size());
         assertEquals(3, lista2.size());
@@ -72,7 +76,7 @@ public class TarkastajaTest {
             testilauta.getLauta()[i][1].setVari(Vari.KELTAINEN);
         }
         
-        ArrayList<palikka> lista = testitarkastaja.tarkastaOikea(0, 1);
+        ArrayList<Palikka> lista = testitarkastaja.tarkastaOikea(0, 1);
         
         assertEquals(5, lista.size());
     }
@@ -86,8 +90,8 @@ public class TarkastajaTest {
             testilauta.getLauta()[i][1].setVari(Vari.SININEN);
         }
         
-        ArrayList<palikka> lista1 = testitarkastaja.tarkastaOikea(0, 1);
-        ArrayList<palikka> lista2 = testitarkastaja.tarkastaOikea(3, 1);
+        ArrayList<Palikka> lista1 = testitarkastaja.tarkastaOikea(0, 1);
+        ArrayList<Palikka> lista2 = testitarkastaja.tarkastaOikea(3, 1);
         
         assertEquals(3, lista1.size());
         assertEquals(3, lista2.size());
@@ -107,7 +111,7 @@ public class TarkastajaTest {
             testilauta.getLauta()[i][2].setVari(Vari.SININEN);
         }
         
-        ArrayList<palikka> lista = testitarkastaja.tarkastaLauta();
+        ArrayList<Palikka> lista = testitarkastaja.tarkastaLauta();
         
         assertTrue(lista.size() >= 6);
     }

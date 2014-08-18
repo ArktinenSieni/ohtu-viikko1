@@ -4,35 +4,35 @@
  * and open the template in the editor.
  */
 
-package peli;
+package diskotetris.peli;
 
 import java.util.ArrayList;
-import sienimetsa.discotetris.logiikka.Tarkastaja;
-import sienimetsa.discotetris.logiikka.Vari;
-import sienimetsa.discotetris.logiikka.kursori;
-import sienimetsa.discotetris.logiikka.lauta;
-import sienimetsa.discotetris.logiikka.palikka;
+import diskotetris.logiikka.Tarkastaja;
+import diskotetris.logiikka.Vari;
+import diskotetris.logiikka.Kursori;
+import diskotetris.logiikka.Lauta;
+import diskotetris.logiikka.Palikka;
 
 /**
  *
  * @author matti
  */
 public class Discopeli {
-    final lauta pelilauta;
+    final Lauta pelilauta;
     final Tarkastaja tarkastaja;
-    final kursori kursori;
+    final Kursori kursori;
     public boolean pyoriiko;
     public boolean gameOver;
     
     public Discopeli() {
-        pelilauta = new lauta();
+        pelilauta = new Lauta();
         tarkastaja = new Tarkastaja(pelilauta);
-        kursori = new kursori(pelilauta);
+        kursori = new Kursori(pelilauta);
         pyoriiko = false;
         gameOver = false;
     }
 
-    public lauta getPelilauta() {
+    public Lauta getPelilauta() {
         return pelilauta;
     }
 
@@ -40,7 +40,7 @@ public class Discopeli {
         return tarkastaja;
     }
 
-    public kursori getKursori() {
+    public Kursori getKursori() {
         return kursori;
     }
     
@@ -55,13 +55,13 @@ public class Discopeli {
     
     public void peliLooppi() {
             pelilauta.painovoima();
-            ArrayList<palikka> lista = tarkastaja.tarkastaLauta();
+            ArrayList<Palikka> lista = tarkastaja.tarkastaLauta();
             //render
             //päivitysmetodi todennäköisemmin tulee käyttöliittymän puolelle
             
             if(lista.size() > 3) {
                 //pisteytä
-                for (palikka object : lista) {
+                for (Palikka object : lista) {
                     object.setVari(Vari.TYHJA);
                     lista.clear();
                 }

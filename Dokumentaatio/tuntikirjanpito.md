@@ -41,3 +41,8 @@
 
 ####__16:00-17:30__
 * käyttöliittymään liittyvän infon keräämistä ja suunnittelua
+
+###__18.8 16:30-18:20__
+
+* Koodin parantelua erinomaisen koodikatselmoinnin perusteella
+* käyttöliittymän tekoa

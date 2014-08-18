@@ -1,11 +1,15 @@
-package sienimetsa.discotetris;
+package diskotetris;
 
+import diskotetris.kayttoliittyma.Kayttoliittyma;
+import diskotetris.logiikka.Tarkastaja;
+import diskotetris.logiikka.Vari;
+import diskotetris.logiikka.Kursori;
+import diskotetris.logiikka.Lauta;
+import diskotetris.logiikka.Palikka;
+import diskotetris.peli.Discopeli;
 import java.util.ArrayList;
-import sienimetsa.discotetris.logiikka.Tarkastaja;
-import sienimetsa.discotetris.logiikka.Vari;
-import sienimetsa.discotetris.logiikka.kursori;
-import sienimetsa.discotetris.logiikka.lauta;
-import sienimetsa.discotetris.logiikka.palikka;
+import javax.swing.SwingUtilities;
+
 
 /**
  * Hello world!
@@ -14,9 +18,17 @@ import sienimetsa.discotetris.logiikka.palikka;
 public class App {
 
     public static void main(String[] args) {
-        lauta testilauta = new lauta();
-        kursori kohdistin = new kursori(testilauta);
+        Lauta testilauta = new Lauta();
+        Kursori kohdistin = new Kursori(testilauta);
         Tarkastaja tarkastaja = new Tarkastaja(testilauta);
+        Discopeli testipeli = new Discopeli();
+        
+        
+        Kayttoliittyma testi = new Kayttoliittyma(testipeli);
+        
+        SwingUtilities.invokeLater(testi);
+
+        testi.run();
 
 //        tulostaRivit(testilauta, 2);
 //        
@@ -71,34 +83,34 @@ public class App {
 //        
 //        tulostaRivit(testilauta, 3);
         
-        System.out.println("***");
-        for (int i = 0; i < 3; i++) {
-            testilauta.generoiRivi();
-            testilauta.tyonnaRivi();
-        }
-        
-        for (int i = 1; i < 4; i++) {
-            testilauta.getLauta()[0][i].setVari(Vari.PUNAINEN);
-        }
-        
-        for (int i = 3; i < testilauta.maxX(); i++) {
-            testilauta.getLauta()[i][2].setVari(Vari.SININEN);
-        }
-        
-        tulostaLauta(testilauta);
-        
-        System.out.println("***");
-        
-        ArrayList<palikka> poistettavat = tarkastaja.tarkastaLauta();
-        
-        for (palikka object : poistettavat) {
-            testilauta.poistaPalikka(object);
-        }
-        
-        tulostaLauta(testilauta);
+//        System.out.println("***");
+//        for (int i = 0; i < 3; i++) {
+//            testilauta.generoiRivi();
+//            testilauta.tyonnaRivi();
+//        }
+//        
+//        for (int i = 1; i < 4; i++) {
+//            testilauta.getLauta()[0][i].setVari(Vari.PUNAINEN);
+//        }
+//        
+//        for (int i = 3; i < testilauta.maxX(); i++) {
+//            testilauta.getLauta()[i][2].setVari(Vari.SININEN);
+//        }
+//        
+//        tulostaLauta(testilauta);
+//        
+//        System.out.println("***");
+//        
+//        ArrayList<palikka> poistettavat = tarkastaja.tarkastaLauta();
+//        
+//        for (palikka object : poistettavat) {
+//            testilauta.poistaPalikka(object);
+//        }
+//        
+//        tulostaLauta(testilauta);
     }
 
-    public static void tulostaRivit(lauta banaani, int rivimaara) {
+    public static void tulostaRivit(Lauta banaani, int rivimaara) {
         for (int j = rivimaara - 1; j >= 0; j--) {
 
             for (int i = 0; i < banaani.getLauta().length; i++) {
@@ -108,7 +120,7 @@ public class App {
         }
     }
     
-    public static void tulostaLauta(lauta banaani) {
+    public static void tulostaLauta(Lauta banaani) {
         for (int j = banaani.maxY() - 1; j >= 0; j--) {
             for (int i = 0; i < banaani.maxX(); i++) {
                 System.out.print("[" + banaani.getLauta()[i][j].getVari() + "]");

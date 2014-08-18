@@ -1,16 +1,21 @@
-package sienimetsa.discotetris.logiikka;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package diskotetris.logiikka;
 
 /**
  *
  * @author mcraty
  */
-public class kursori {
-
+public class Kursori {
     private int sijaintiX;
     private int sijaintiY;
-    private lauta pelilauta;
+    private Lauta pelilauta;
 
-    public kursori(lauta pelilauta) {
+    public Kursori(Lauta pelilauta) {
         sijaintiX = 0;
         sijaintiY = 1;
         this.pelilauta = pelilauta;

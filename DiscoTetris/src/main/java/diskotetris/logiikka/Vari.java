@@ -1,6 +1,8 @@
 
 
-package sienimetsa.discotetris.logiikka;
+package diskotetris.logiikka;
+
+
 
 /**
  *

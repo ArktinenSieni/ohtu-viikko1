@@ -1,6 +1,9 @@
 
 package sienimetsa.discotetris.logiikka;
 
+import diskotetris.logiikka.Palikka;
+import diskotetris.logiikka.Lauta;
+import diskotetris.logiikka.Vari;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,7 +17,7 @@ import static org.junit.Assert.*;
  */
 public class lautaTest {
 
-    public lauta testiLauta;
+    public Lauta testiLauta;
 
     public lautaTest() {
 
@@ -31,7 +34,7 @@ public class lautaTest {
 
     @Before
     public void setUp() {
-        testiLauta = new lauta();
+        testiLauta = new Lauta();
     }
 
     @After
@@ -52,8 +55,8 @@ public class lautaTest {
 
     @Test
     public void vaihto() {
-        testiLauta.getLauta()[3][0] = new palikka(Vari.PUNAINEN);
-        testiLauta.getLauta()[3][1] = new palikka(Vari.VIOLETTI);
+        testiLauta.getLauta()[3][0] = new Palikka(Vari.PUNAINEN);
+        testiLauta.getLauta()[3][1] = new Palikka(Vari.VIOLETTI);
         testiLauta.vaihto(3, 0, 3, 1);
 
         assertEquals(Vari.VIOLETTI, testiLauta.getLauta()[3][0].getVari());

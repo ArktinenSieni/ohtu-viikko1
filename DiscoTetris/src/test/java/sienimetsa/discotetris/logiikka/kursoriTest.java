@@ -1,6 +1,9 @@
 
 package sienimetsa.discotetris.logiikka;
 
+import diskotetris.logiikka.Kursori;
+import diskotetris.logiikka.Palikka;
+import diskotetris.logiikka.Lauta;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,8 +16,8 @@ import static org.junit.Assert.*;
  * @author mcraty
  */
 public class kursoriTest {
-    public kursori testiKursori;
-    public lauta testiLauta;
+    public Kursori testiKursori;
+    public Lauta testiLauta;
     
     
     public kursoriTest() {
@@ -30,8 +33,8 @@ public class kursoriTest {
     
     @Before
     public void setUp() {
-        testiLauta = new lauta();
-        testiKursori = new kursori(testiLauta);
+        testiLauta = new Lauta();
+        testiKursori = new Kursori(testiLauta);
     }
     
     @After
@@ -70,8 +73,8 @@ public class kursoriTest {
         testiLauta.generoiRivi();
         testiLauta.tyonnaRivi();
         
-        palikka eka = testiLauta.getLauta()[0][1];
-        palikka toka = testiLauta.getLauta()[1][1];
+        Palikka eka = testiLauta.getLauta()[0][1];
+        Palikka toka = testiLauta.getLauta()[1][1];
         
         testiKursori.vaihda();
         
@@ -84,8 +87,8 @@ public class kursoriTest {
         testiLauta.generoiRivi();
         testiLauta.tyonnaRivi();
         
-        palikka eka = testiLauta.getLauta()[4][1];
-        palikka toka = testiLauta.getLauta()[5][1];
+        Palikka eka = testiLauta.getLauta()[4][1];
+        Palikka toka = testiLauta.getLauta()[5][1];
         
         for (int i = 0; i < 5; i++) {
             testiKursori.oikea();

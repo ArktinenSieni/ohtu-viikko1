@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 /**
  *
- * @author matti
+ * @author mcraty
+ * 
+ * Luokan tarkoituksena tarkastaa pelilaudalta vierekkäiset kolmenyhdistelmät.
+ * Ajatuksena on tarkastaa ne rekursiivisesti, kasata listaan, ja palauttaa 
+ * toiselle oliolle poistettavaksi.
  */
 public class Tarkastaja {
 
@@ -14,6 +18,14 @@ public class Tarkastaja {
         this.pelilauta = lauta;
     }
 
+    /**
+     * Etsii palikat alhaalta ylös, jotka ovat samanvärisiä lähtöpalikan
+     * kanssa.
+     * 
+     * @param x
+     * @param y
+     * @return Samanväriset palikat listassa.
+     */
     public ArrayList<Palikka> tarkastaYlos(int x, int y) {
         ArrayList<Palikka> yhdistelmat = new ArrayList<Palikka>();
         if (pelilauta.getPalikanVari(x, y) != Vari.TYHJA) {
@@ -30,6 +42,14 @@ public class Tarkastaja {
         return yhdistelmat;
     }
    
+    /**
+     * Etsii palikat vasemmalta oikealle, jotka ovat samanvärisiä
+     * lähtöpalikan kanssa.
+     * 
+     * @param x
+     * @param y
+     * @return Samanväriset palikat listassa.
+     */
     public ArrayList<Palikka> tarkastaOikea(int x, int y) {
         ArrayList<Palikka> yhdistelmat = new ArrayList<Palikka>();
         if (pelilauta.getPalikanVari(x, y) != Vari.TYHJA) {
@@ -46,6 +66,13 @@ public class Tarkastaja {
         return yhdistelmat;
     }
     
+    /**
+     * Tarkastaa kaikki laudan yhdistelmät. 
+     * Poistettavien listaan lisätään ainoastaan jos kyseinen palikka jo ei ole
+     * listassa, ja kun vierekkäisiä samanvärisiä on vähintään kolme.
+     * 
+     * @return 
+     */
     public ArrayList<Palikka> tarkastaLauta() {
         ArrayList<Palikka> poistettavat = new ArrayList<Palikka>();
         
@@ -76,6 +103,12 @@ public class Tarkastaja {
         return poistettavat;
     }
     
+    /**
+     * Tarkastaa korkeimman rivin tilan.
+     * Käytetään pelin jatkumista tarkastaessa.
+     * 
+     * @return 
+     */
     public boolean liianKorkea() {
         for (int i = 0; i < this.pelilauta.maxX(); i++) {
             if (pelilauta.getPalikanVari(i, pelilauta.maxY() - 1) != Vari.TYHJA) {

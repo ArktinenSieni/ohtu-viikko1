@@ -18,11 +18,11 @@ import javax.swing.SwingUtilities;
 public class App {
 
     public static void main(String[] args) {
-        Lauta testilauta = new Lauta();
-        Kursori kohdistin = new Kursori(testilauta);
-        Tarkastaja tarkastaja = new Tarkastaja(testilauta);
         Discopeli testipeli = new Discopeli();
         
+        testipeli.generoiAloitus();
+        
+        tulostaLauta(testipeli.getPelilauta());
         
         Kayttoliittyma testi = new Kayttoliittyma(testipeli);
         

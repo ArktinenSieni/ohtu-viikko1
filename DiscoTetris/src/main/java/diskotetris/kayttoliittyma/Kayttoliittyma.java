@@ -2,12 +2,9 @@ package diskotetris.kayttoliittyma;
 
 import diskotetris.peli.Discopeli;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,11 +30,10 @@ public class Kayttoliittyma implements Runnable {
         frame = new JFrame("Disko Tetris");
 
         final int leveys = 500;
-        final int korkeus = 600;
+        final int korkeus = 630;
         Dimension haluttuKoko = new Dimension(leveys, korkeus);
 
         frame.setPreferredSize(haluttuKoko);
-        frame.setMinimumSize(haluttuKoko);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,16 +48,18 @@ public class Kayttoliittyma implements Runnable {
         JPanel testiTiedot = luoPelitiedot();
 
         container.add(piirtoalusta);
+        
         container.add(testiTiedot, BorderLayout.EAST);
+        
+        frame.addKeyListener(new NappaimistonKuuntelija(peli.getKursori(), piirtoalusta));
 
     }
 
     private JPanel luoPelitiedot() {
         JPanel panel = new JPanel(new GridLayout(3, 1));
 
-        panel.setBackground(Color.white);
 
-        panel.setPreferredSize(new Dimension(200, 600));
+        panel.setPreferredSize(new Dimension(190, 600));
 
         JLabel aika = new JLabel("Aika: 120");
         JLabel taso = new JLabel("Taso: 3");

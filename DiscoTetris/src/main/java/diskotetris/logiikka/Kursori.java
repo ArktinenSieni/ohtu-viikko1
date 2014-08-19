@@ -1,20 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package diskotetris.logiikka;
 
 /**
  *
  * @author mcraty
+ * Luokan tarkoituksena on antaa pelaajan käyttöön metodit palikoiden 
+ * liikuttamiseen. Koordinaatit välitetään myös Piirtoalustalle.
+ *  
  */
 public class Kursori {
     private int sijaintiX;
     private int sijaintiY;
     private Lauta pelilauta;
-
+    
     public Kursori(Lauta pelilauta) {
         sijaintiX = 0;
         sijaintiY = 1;
@@ -26,7 +24,7 @@ public class Kursori {
             sijaintiY++;
         }
     }
-
+    
     public void alas() {
         if (sijaintiY > 1) {
             sijaintiY--;
@@ -49,11 +47,12 @@ public class Kursori {
         pelilauta.vaihto(sijaintiX, sijaintiY, sijaintiX + 1, sijaintiY);
     }
 
-    public int[] getSijainti() {
-        int[] koordinaatit = new int[2];
-        koordinaatit[0] = sijaintiX;
-        koordinaatit[1] = sijaintiY;
-
-        return koordinaatit;
+    public int getX() {
+        return sijaintiX;
     }
+    
+    public int getY() {
+        return sijaintiY;
+    }
+    
 }

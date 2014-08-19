@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package diskotetris.peli;
 
 import java.util.ArrayList;
@@ -16,6 +10,9 @@ import diskotetris.logiikka.Palikka;
 /**
  *
  * @author matti
+ * 
+ * Toimii logiikan ja käyttöliittymän "välittäjänä". Kokoaa logiikan yhteen
+ * käyttöliittymän käytettäväksi.
  */
 public class Discopeli {
     final Lauta pelilauta;
@@ -44,6 +41,10 @@ public class Discopeli {
         return kursori;
     }
     
+    /**
+     * Pelin alkaessa suoritettava toiminto.
+     * Peli alkaa aina kolmella generoidulla rivillä.
+     */
     public void generoiAloitus() {
         for (int i = 0; i < 3; i++) {
             pelilauta.generoiRivi();
@@ -51,6 +52,23 @@ public class Discopeli {
         }
         
         pelilauta.generoiRivi();
+    }
+    
+    /**
+     * Tuottaa uuden rivin.
+     * Suoritetaan joko pelaajan aloitteesta, tai tietyn aikamäärän kuluessa.
+     */
+    public void uusiRivi() {
+        pelilauta.tyonnaRivi();
+        pelilauta.generoiRivi();
+    }
+    
+    public void poistaYhdistelmat() {
+        ArrayList<Palikka> poistettavat = this.tarkastaja.tarkastaLauta();
+        
+        for (Palikka palikka : poistettavat) {
+            pelilauta.poistaPalikka(palikka);
+        }
     }
     
     public void peliLooppi() {

@@ -47,7 +47,7 @@ public class kursoriTest {
             testiKursori.oikea();
         }
         
-        assertEquals(4, testiKursori.getSijainti()[0]);
+        assertEquals(4, testiKursori.getX());
     }
     
     @Test
@@ -56,7 +56,7 @@ public class kursoriTest {
             testiKursori.vasen();
         }
         
-        assertEquals(0, testiKursori.getSijainti()[0]);
+        assertEquals(0, testiKursori.getX());
     }
     
     @Test
@@ -65,7 +65,7 @@ public class kursoriTest {
             testiKursori.ylos();
         }
         
-        assertEquals(12, testiKursori.getSijainti()[1]);
+        assertEquals(12, testiKursori.getY());
     }
     
     @Test

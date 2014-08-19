@@ -46,3 +46,7 @@
 
 * Koodin parantelua erinomaisen koodikatselmoinnin perusteella
 * käyttöliittymän tekoa
+
+###__19.8 12:30-16:00__
+
+* käyttöliittymän väsäystä

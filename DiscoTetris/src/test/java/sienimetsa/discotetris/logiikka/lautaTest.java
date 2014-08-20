@@ -95,19 +95,7 @@ public class lautaTest {
         assertTrue(testiLauta.getLauta()[0][1].getVari() != Vari.TYHJA);
     }
     
-    @Test
-    public void painovoima() {
-        this.palikanPudotus();
-        
-        testiLauta.painovoima();
-        
-        for (int i = 0; i < testiLauta.getLauta().length; i++) {
-            assertEquals(Vari.TYHJA, testiLauta.getLauta()[i][0].getVari());
-            assertEquals(Vari.TYHJA, testiLauta.getLauta()[i][2].getVari());
-            assertFalse(testiLauta.getLauta()[i][1].getVari() == Vari.TYHJA);
-        }
-       
-    }
+    
     
 
     // TODO add test methods here.

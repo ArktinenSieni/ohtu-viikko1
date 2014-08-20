@@ -5,7 +5,10 @@ package diskotetris.logiikka;
  *
  * @author mcraty
  * Luokan tarkoituksena on antaa pelaajan käyttöön metodit palikoiden 
- * liikuttamiseen. Koordinaatit välitetään myös Piirtoalustalle.
+ * liikuttamiseen. Koordinaatit ja metodit välitetään myös 
+ * näppäimistönkuuntelijalle.
+ * 
+ * @see diskotetris.kayttoliittyma.NappaimistonKuuntelija
  *  
  */
 public class Kursori {

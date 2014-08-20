@@ -118,6 +118,7 @@ public class Lauta {
                 vaihto(i, j, i, j - 1);
             }
         }
+        this.generoiRivi();
     }
 
     /**
@@ -139,8 +140,8 @@ public class Lauta {
      * Tapahtuu tapauksessa jos värillisen palikan alla on tyhjä palikka.
      */
     public void painovoima() {
-        for (int i = 0; i < this.pelilauta.length; i++) {
-            for (int j = this.pelilauta[i].length - 1; j > 1; j--) {
+        for (int i = 0; i < maxX(); i++) {
+            for (int j = 0; j < maxY(); j++) {
                 this.pudotaPalikka(i, j);
             }
         }

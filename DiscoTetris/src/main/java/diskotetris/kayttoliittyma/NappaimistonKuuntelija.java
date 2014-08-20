@@ -1,6 +1,7 @@
 package diskotetris.kayttoliittyma;
 
 import diskotetris.logiikka.Kursori;
+import diskotetris.peli.Discopeli;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,45 +10,57 @@ import java.awt.event.KeyListener;
  *
  * @author mcraty
  */
-public class NappaimistonKuuntelija implements KeyListener{
+public class NappaimistonKuuntelija implements KeyListener {
 
-    private Component component;
-    private Kursori kursori;
-    
-    public NappaimistonKuuntelija(Kursori kursori, Component component) {
-        this.kursori = kursori;
+    private final Component component;
+    private final Discopeli peli;
+    private final Kursori kursori;
+
+    public NappaimistonKuuntelija(Discopeli peli, Component component) {
+        this.peli = peli;
+        this.kursori = peli.getKursori();
         this.component = component;
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            kursori.vasen();
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            kursori.oikea();
-        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-            kursori.ylos();
-            System.out.println(kursori.getY());
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            kursori.alas();
-            System.out.println(kursori.getY());
-        } 
-//        else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-//            kursori.vaihda();
-//        }
-        
-        component.repaint();
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            kursori.vasen();
+//            peli.getPelilauta().painovoima();
+//            peli.poistaYhdistelmat();
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            kursori.oikea();
+//            peli.getPelilauta().painovoima();
+//            peli.poistaYhdistelmat();
+        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            kursori.ylos();
+//            peli.getPelilauta().painovoima();
+//            peli.poistaYhdistelmat();
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            kursori.alas();
+//            peli.getPelilauta().painovoima();
+//            peli.poistaYhdistelmat();
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            kursori.vaihda();
+//            peli.getPelilauta().painovoima();
+//            peli.poistaYhdistelmat();
+        } else if (e.getKeyCode() == KeyEvent.VK_S) {
+            peli.tyonnaRivi();
+//            peli.getPelilauta().painovoima();
+//            peli.poistaYhdistelmat();
+        }
+
+        component.repaint();
     }
-    
+
 }

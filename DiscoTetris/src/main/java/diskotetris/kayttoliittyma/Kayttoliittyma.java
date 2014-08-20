@@ -2,9 +2,12 @@ package diskotetris.kayttoliittyma;
 
 import diskotetris.peli.Discopeli;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,20 +20,20 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private Discopeli peli;
-    private Piirtoalusta piirtoalusta;
+    private final Discopeli peli;
+    private final Piirtoalusta piirtoalusta;
 
-    public Kayttoliittyma(Discopeli peli) {
-        this.peli = peli;
+    public Kayttoliittyma() {
+        this.peli = new Discopeli(this);
         this.piirtoalusta = new Piirtoalusta(this.peli);
     }
 
     @Override
     public void run() {
-        frame = new JFrame("Disko Tetris");
+        frame = new JFrame("Disco Tetris");
 
         final int leveys = 500;
-        final int korkeus = 630;
+        final int korkeus = 600;
         Dimension haluttuKoko = new Dimension(leveys, korkeus);
 
         frame.setPreferredSize(haluttuKoko);
@@ -39,31 +42,32 @@ public class Kayttoliittyma implements Runnable {
 
         luoKomponentit(frame.getContentPane());
 
+        frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
+        
 
     }
 
     private void luoKomponentit(Container container) {
         JPanel testiTiedot = luoPelitiedot();
 
-        container.add(piirtoalusta);
-        
         container.add(testiTiedot, BorderLayout.EAST);
-        
-        frame.addKeyListener(new NappaimistonKuuntelija(peli.getKursori(), piirtoalusta));
+
+        container.add(piirtoalusta);
+
+        frame.addKeyListener(new NappaimistonKuuntelija(peli, piirtoalusta));
 
     }
 
     private JPanel luoPelitiedot() {
         JPanel panel = new JPanel(new GridLayout(3, 1));
 
+        panel.setPreferredSize(new Dimension(200, 600));
 
-        panel.setPreferredSize(new Dimension(190, 600));
-
-        JLabel aika = new JLabel("Aika: 120");
-        JLabel taso = new JLabel("Taso: 3");
-        JLabel pisteet = new JLabel("Pisteet: 9001");
+        JLabel aika = new JLabel("Nuolinäppäimet");
+        JLabel taso = new JLabel("Space: vaihto");
+        JLabel pisteet = new JLabel("S: Uusi rivi");
 
         panel.add(aika);
         panel.add(taso);
@@ -72,8 +76,14 @@ public class Kayttoliittyma implements Runnable {
         return panel;
     }
 
+    
+
     public JFrame getFrame() {
         return frame;
+    }
+
+    public Piirtoalusta getPiirtoalusta() {
+        return this.piirtoalusta;
     }
 
 }

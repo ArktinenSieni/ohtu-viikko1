@@ -2,14 +2,10 @@ package diskotetris.kayttoliittyma;
 
 import diskotetris.logiikka.Kursori;
 import diskotetris.logiikka.Lauta;
-import diskotetris.logiikka.Palikka;
 import diskotetris.logiikka.Vari;
 import diskotetris.peli.Discopeli;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 /**
@@ -18,8 +14,8 @@ import javax.swing.JPanel;
  */
 public class Piirtoalusta extends JPanel {
 
-    private Lauta pelilauta;
-    private Kursori kursori;
+    private final Lauta pelilauta;
+    private final Kursori kursori;
 
     public Piirtoalusta(Discopeli peli) {
         super.setBackground(Color.black);
@@ -42,9 +38,9 @@ public class Piirtoalusta extends JPanel {
         int y = 600 - kursori.getY() * 50;
 
         graphics.fillRect(x, y, 100, 5);
-        graphics.fillRect(x + 100, y, 5, 50);
+        graphics.fillRect(x + 95, y, 5, 50);
         graphics.fillRect(x, y, 5, 45);
-        graphics.fillRect(x, y + 45, 105, 5);
+        graphics.fillRect(x, y + 45, 100, 5);
     }
 
     private Color variToColor(Vari vari) {

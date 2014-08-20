@@ -24,7 +24,7 @@
 * Logiikka alusta, selkeämmäksi
 * virheiden korjausta, buildaaminen onnistuu
 
-###__12.8.2014 12:00-16:00
+###__12.8.2014 12:00-16:00__
 
 * Logiikka etenee
 * Testejä
@@ -50,3 +50,8 @@
 ###__19.8 12:30-16:00__
 
 * käyttöliittymän väsäystä
+
+###__20.8 13:00-18:00__
+
+* Käyttöliittymän tekoa
+* Ajastimen kokeilua huonolla menestyksellä

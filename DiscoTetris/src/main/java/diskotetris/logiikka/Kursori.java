@@ -2,14 +2,12 @@
 package diskotetris.logiikka;
 
 /**
- *
- * @author mcraty
  * Luokan tarkoituksena on antaa pelaajan käyttöön metodit palikoiden 
  * liikuttamiseen. Koordinaatit ja metodit välitetään myös 
  * näppäimistönkuuntelijalle.
- * 
  * @see diskotetris.kayttoliittyma.NappaimistonKuuntelija
- *  
+ * 
+ * @author mcraty
  */
 public class Kursori {
     private int sijaintiX;

@@ -1,13 +1,7 @@
 package diskotetris;
 
 import diskotetris.kayttoliittyma.Kayttoliittyma;
-import diskotetris.logiikka.Tarkastaja;
-import diskotetris.logiikka.Vari;
-import diskotetris.logiikka.Kursori;
 import diskotetris.logiikka.Lauta;
-import diskotetris.logiikka.Palikka;
-import diskotetris.peli.Discopeli;
-import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 

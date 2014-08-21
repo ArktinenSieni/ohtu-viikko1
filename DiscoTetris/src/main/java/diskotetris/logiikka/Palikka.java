@@ -1,12 +1,11 @@
 package diskotetris.logiikka;
 
 /**
- *
+ * Luokka yksittäisen palikan luomiselle.
+ * @see diskotetris.logiikka.lauta
+ * 
  * @author mcraty
  * 
- * Luokka yksittäisen palikan luomiselle.
- * 
- * @see diskotetris.logiikka.lauta
  */
 public class Palikka {
 

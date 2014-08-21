@@ -5,7 +5,8 @@ package diskotetris.logiikka;
 
 
 /**
- *
+ * Luokka palikan värin määrittämiselle.
+ * 
  * @author mcraty
  */
 public enum Vari {

@@ -3,20 +3,15 @@ package diskotetris.peli;
 import diskotetris.kayttoliittyma.Kayttoliittyma;
 import java.util.ArrayList;
 import diskotetris.logiikka.Tarkastaja;
-import diskotetris.logiikka.Vari;
 import diskotetris.logiikka.Kursori;
 import diskotetris.logiikka.Lauta;
 import diskotetris.logiikka.Palikka;
-import java.awt.Component;
-import java.awt.Frame;
-import javax.swing.JFrame;
 
 /**
- *
- * @author matti
- *
  * Toimii logiikan ja käyttöliittymän "välittäjänä". Kokoaa logiikan yhteen
  * käyttöliittymän käytettäväksi.
+ *
+ * @author matti
  */
 public class Discopeli {
 
@@ -25,7 +20,6 @@ public class Discopeli {
     final Kursori kursori;
     public boolean pyoriiko;
     public boolean gameOver;
-    private Component component;
 
     public Discopeli(Kayttoliittyma UI) {
         pelilauta = new Lauta();
@@ -33,7 +27,6 @@ public class Discopeli {
         kursori = new Kursori(pelilauta);
         pyoriiko = false;
         gameOver = false;
-        component = UI.getPiirtoalusta();
         generoiAloitus();
     }
 
@@ -64,7 +57,7 @@ public class Discopeli {
      */
     public void generoiAloitus() {
         pelilauta.alusta();
-        
+
         for (int i = 0; i < 3; i++) {
             pelilauta.generoiRivi();
             pelilauta.tyonnaRivi();
@@ -84,24 +77,29 @@ public class Discopeli {
 
     /**
      * Poistaa kaikki vähintään kolmen pituiset yhdistelmät kerralla.
+     * Lisäksi ilmoittaa metodin kutsujalle, että tapahtuiko poistoa.
      */
-    public void poistaYhdistelmat() {
+    public boolean poistaYhdistelmat() {
         ArrayList<Palikka> poistettavat = this.tarkastaja.tarkastaLauta();
 
-        for (Palikka palikka : poistettavat) {
-            pelilauta.poistaPalikka(palikka);
+        if (poistettavat.size() > 0) {
+            for (Palikka palikka : poistettavat) {
+                pelilauta.poistaPalikka(palikka);
+            }
+            return true;
         }
+        return false;
     }
-
+    
     /**
-     * Päivittää laudan tilanteen yhdistelmien ja avoimien kohtien esiintyessä.
+     * Tarkastaa että onko poistettavia. Jokaisen palikoiden poiston jälkeen
+     * pudottaa palikat.
      */
-    public void laudanPaivitys() {
-        pelilauta.painovoima();
-        poistaYhdistelmat();
-        pelilauta.painovoima();
-        
-
+    public void tarkastaLauta() {
+        this.pelilauta.painovoima();
+        while (poistaYhdistelmat()) {
+            this.pelilauta.painovoima();
+        }
     }
 
     /**
@@ -112,21 +110,4 @@ public class Discopeli {
         this.gameOver = tarkastaja.liianKorkea();
     }
 
-    /**
-     * Metodi pelipäivityksien hoitamiseksi.
-     */
-    public void peliLooppi() throws InterruptedException {
-
-        while (!gameOver) {
-            laudanPaivitys();
-            component.repaint();
-            Thread.sleep(1);
-
-        }
-        
-        generoiAloitus();
-        
-        peliLooppi();
-
-    }
 }

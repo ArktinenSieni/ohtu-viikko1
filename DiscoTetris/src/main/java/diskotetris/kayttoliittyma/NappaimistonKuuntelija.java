@@ -7,7 +7,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- *
+ * Ottaa vastaan näppäimistökomennot peliä varten. Testiversiossa myös
+ * päivittää laudan.
+ * 
  * @author mcraty
  */
 public class NappaimistonKuuntelija implements KeyListener {
@@ -27,40 +29,39 @@ public class NappaimistonKuuntelija implements KeyListener {
 
     }
 
+    /**
+     * Määrittelee kunkin näppäimistön napin painalluksen seuraukset.
+     * 
+     * @param e 
+     */
     @Override
     public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            kursori.vasen();
+            peli.tarkastaLauta();
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            kursori.oikea();
+            peli.tarkastaLauta();
+        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            kursori.ylos();
+            peli.tarkastaLauta();
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            kursori.alas();
+            peli.tarkastaLauta();
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            kursori.vaihda();
+            peli.tarkastaLauta();
+        } else if (e.getKeyCode() == KeyEvent.VK_S) {
+            peli.tyonnaRivi();
+            peli.tarkastaLauta();
+        }
 
+        component.repaint();
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            kursori.vasen();
-//            peli.getPelilauta().painovoima();
-//            peli.poistaYhdistelmat();
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            kursori.oikea();
-//            peli.getPelilauta().painovoima();
-//            peli.poistaYhdistelmat();
-        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-            kursori.ylos();
-//            peli.getPelilauta().painovoima();
-//            peli.poistaYhdistelmat();
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            kursori.alas();
-//            peli.getPelilauta().painovoima();
-//            peli.poistaYhdistelmat();
-        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            kursori.vaihda();
-//            peli.getPelilauta().painovoima();
-//            peli.poistaYhdistelmat();
-        } else if (e.getKeyCode() == KeyEvent.VK_S) {
-            peli.tyonnaRivi();
-//            peli.getPelilauta().painovoima();
-//            peli.poistaYhdistelmat();
-        }
-
-        component.repaint();
+        
     }
 
 }

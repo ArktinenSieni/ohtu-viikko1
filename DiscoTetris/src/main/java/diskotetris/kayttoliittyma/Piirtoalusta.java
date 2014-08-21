@@ -9,7 +9,8 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- *
+ * Piirtää pelilaudan palikat ja kursorin.
+ * 
  * @author matti
  */
 public class Piirtoalusta extends JPanel {
@@ -23,6 +24,11 @@ public class Piirtoalusta extends JPanel {
         this.kursori = peli.getKursori();
     }
 
+    /**
+     * Kokoaa piirrettävät kohteet.
+     * 
+     * @param graphics 
+     */
     @Override
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
@@ -30,7 +36,14 @@ public class Piirtoalusta extends JPanel {
         piirraKursori(graphics);
 
     }
-
+    
+    /**
+     * Piirtää vaaleanvihreän värisen kursorin kursori-metodin koordinaattien
+     * mukaan.
+     * @see diskotetris.logiikka.Kursori
+     * 
+     * @param graphics 
+     */
     public void piirraKursori(Graphics graphics) {
         graphics.setColor(Color.green);
 
@@ -43,6 +56,13 @@ public class Piirtoalusta extends JPanel {
         graphics.fillRect(x, y + 45, 100, 5);
     }
 
+    /**
+     * Muuttaa annetun Väri-enumluokan Swingin luokkaan Color. 
+     * Palikoiden piirtämiseen vaadittava apumetodi.
+     * 
+     * @param vari Annettu Vari
+     * @return Swingin Color
+     */
     private Color variToColor(Vari vari) {
         if (vari == Vari.SININEN) {
             return Color.blue;
@@ -63,7 +83,13 @@ public class Piirtoalusta extends JPanel {
 
         return Color.black;
     }
-
+    
+    /**
+     * Piirtää palikat pelilaudalle. Ottaa koordinaatit lauta-luokan mukaan.
+     * @see diskotetris.logiikka.Lauta
+     * 
+     * @param graphics palikat.
+     */
     public void piirraPalikat(Graphics graphics) {
         for (int i = 0; i < pelilauta.maxX(); i++) {
             for (int j = 1; j < pelilauta.maxY() - 1; j++) {

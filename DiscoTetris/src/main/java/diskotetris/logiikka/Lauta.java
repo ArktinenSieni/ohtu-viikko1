@@ -3,13 +3,13 @@ package diskotetris.logiikka;
 import java.util.Random;
 
 /**
- *
- * @author mcraty Luokka pitää yllä pelilautaa ja siinä olevia palikoita.
  * Vaakarivi (y-akseli) 0 on tarkoitettu ainoastaan riviksi, johon generoidaan
  * rivi, joka on täynnä erivärisiä palikoita. Vaakariviä 13 käytetään pelin
  * jatkumisen tarkistamiseen. Jos rivillä 13 on värillinen palikka, peli
  * päättyy. Itse pelaajan käytössä on siis vaakarivit 1-12, ja pystyrivit
  * (x-akseli) 0-5.
+ * 
+ * @author mcraty Luokka pitää yllä pelilautaa ja siinä olevia palikoita.
  */
 public class Lauta {
 

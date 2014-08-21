@@ -2,19 +2,17 @@ package diskotetris.kayttoliittyma;
 
 import diskotetris.peli.Discopeli;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 /**
- *
+ * Pelin käyttöliittymä. Luo peliin kuuluvat komponentit.
+ * 
  * @author matti
  */
 public class Kayttoliittyma implements Runnable {
@@ -48,7 +46,11 @@ public class Kayttoliittyma implements Runnable {
         
 
     }
-
+    
+    /**
+     * Metodi komponenttien luomiseksi. 
+     * @param container Pelin ikkuna
+     */
     private void luoKomponentit(Container container) {
         JPanel testiTiedot = luoPelitiedot();
 
@@ -59,7 +61,12 @@ public class Kayttoliittyma implements Runnable {
         frame.addKeyListener(new NappaimistonKuuntelija(peli, piirtoalusta));
 
     }
-
+    
+    /**
+     * Hahmotelmaa että miltä pelitiedot tulevat näyttämään.
+     * 
+     * @return Koottu paneeli.
+     */
     private JPanel luoPelitiedot() {
         JPanel panel = new JPanel(new GridLayout(3, 1));
 

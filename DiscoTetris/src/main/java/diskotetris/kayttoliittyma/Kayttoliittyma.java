@@ -22,10 +22,18 @@ public class Kayttoliittyma implements Runnable {
     private final Piirtoalusta piirtoalusta;
 
     public Kayttoliittyma() {
-        this.peli = new Discopeli(this);
+        this.peli = new Discopeli();
         this.piirtoalusta = new Piirtoalusta(this.peli);
     }
+    
+    public Paivitettava getPaivitettava() {
+        return this.piirtoalusta;
+    }
 
+    public Discopeli getDiscopeli() {
+        return peli;
+    }
+    
     @Override
     public void run() {
         frame = new JFrame("Disco Tetris");

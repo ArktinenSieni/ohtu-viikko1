@@ -14,14 +14,14 @@ import java.awt.event.KeyListener;
  */
 public class NappaimistonKuuntelija implements KeyListener {
 
-    private final Component component;
+    private final Paivitettava paivitettava;
     private final Discopeli peli;
     private final Kursori kursori;
 
-    public NappaimistonKuuntelija(Discopeli peli, Component component) {
+    public NappaimistonKuuntelija(Discopeli peli, Paivitettava paivitettava) {
         this.peli = peli;
         this.kursori = peli.getKursori();
-        this.component = component;
+        this.paivitettava = paivitettava;
     }
 
     @Override
@@ -38,25 +38,19 @@ public class NappaimistonKuuntelija implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             kursori.vasen();
-            peli.tarkastaLauta();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             kursori.oikea();
-            peli.tarkastaLauta();
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
             kursori.ylos();
-            peli.tarkastaLauta();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             kursori.alas();
-            peli.tarkastaLauta();
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             kursori.vaihda();
-            peli.tarkastaLauta();
         } else if (e.getKeyCode() == KeyEvent.VK_S) {
             peli.tyonnaRivi();
-            peli.tarkastaLauta();
         }
 
-        component.repaint();
+        paivitettava.paivita();
     }
 
     @Override

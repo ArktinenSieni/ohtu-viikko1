@@ -55,3 +55,7 @@
 
 * Käyttöliittymän tekoa
 * Ajastimen kokeilua huonolla menestyksellä
+
+###__22.8 09:00-11:00__
+
+* Ajastimen haltuunotto, peli on kutakuinkin reaaliaikainen!

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  * 
  * @author matti
  */
-public class Piirtoalusta extends JPanel {
+public class Piirtoalusta extends JPanel implements Paivitettava{
 
     private final Lauta pelilauta;
     private final Kursori kursori;
@@ -88,16 +88,22 @@ public class Piirtoalusta extends JPanel {
      * Piirtää palikat pelilaudalle. Ottaa koordinaatit lauta-luokan mukaan.
      * @see diskotetris.logiikka.Lauta
      * 
-     * @param graphics palikat.
+     * @param graphics 
      */
     public void piirraPalikat(Graphics graphics) {
         for (int i = 0; i < pelilauta.maxX(); i++) {
             for (int j = 1; j < pelilauta.maxY() - 1; j++) {
                 graphics.setColor(variToColor(pelilauta.getPalikanVari(i, j)));
 
-                graphics.fillRect(i * 50, 600 - j * 50, 50, 50);
+                graphics.fill3DRect(i * 50, 600 - j * 50, 50, 50, true);
+                
             }
         }
+    }
+
+    @Override
+    public void paivita() {
+        super.repaint();
     }
 
 }

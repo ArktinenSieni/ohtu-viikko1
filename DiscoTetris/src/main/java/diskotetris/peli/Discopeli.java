@@ -1,11 +1,14 @@
 package diskotetris.peli;
 
-import diskotetris.kayttoliittyma.Kayttoliittyma;
-import java.util.ArrayList;
-import diskotetris.logiikka.Tarkastaja;
+import diskotetris.kayttoliittyma.Paivitettava;
 import diskotetris.logiikka.Kursori;
 import diskotetris.logiikka.Lauta;
 import diskotetris.logiikka.Palikka;
+import diskotetris.logiikka.Tarkastaja;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.Timer;
 
 /**
  * Toimii logiikan ja käyttöliittymän "välittäjänä". Kokoaa logiikan yhteen
@@ -13,21 +16,25 @@ import diskotetris.logiikka.Palikka;
  *
  * @author matti
  */
-public class Discopeli {
+public class Discopeli extends Timer implements ActionListener {
 
-    final Lauta pelilauta;
-    final Tarkastaja tarkastaja;
-    final Kursori kursori;
-    public boolean pyoriiko;
-    public boolean gameOver;
+    private final Lauta pelilauta;
+    private final Tarkastaja tarkastaja;
+    private final Kursori kursori;
+    private boolean pyoriiko;
+    private boolean gameOver;
+    private Paivitettava paivitettava;
 
-    public Discopeli(Kayttoliittyma UI) {
+    public Discopeli() {
+        super(1000, null);
         pelilauta = new Lauta();
         tarkastaja = new Tarkastaja(pelilauta);
         kursori = new Kursori(pelilauta);
         pyoriiko = false;
         gameOver = false;
         generoiAloitus();
+
+        addActionListener(this);
     }
 
     public Lauta getPelilauta() {
@@ -64,6 +71,8 @@ public class Discopeli {
         }
 
         pelilauta.generoiRivi();
+
+        this.pyoriiko = true;
     }
 
     /**
@@ -76,8 +85,8 @@ public class Discopeli {
     }
 
     /**
-     * Poistaa kaikki vähintään kolmen pituiset yhdistelmät kerralla.
-     * Lisäksi ilmoittaa metodin kutsujalle, että tapahtuiko poistoa.
+     * Poistaa kaikki vähintään kolmen pituiset yhdistelmät kerralla. Lisäksi
+     * ilmoittaa metodin kutsujalle, että tapahtuiko poistoa.
      */
     public boolean poistaYhdistelmat() {
         ArrayList<Palikka> poistettavat = this.tarkastaja.tarkastaLauta();
@@ -86,11 +95,12 @@ public class Discopeli {
             for (Palikka palikka : poistettavat) {
                 pelilauta.poistaPalikka(palikka);
             }
+            paivitettava.paivita();
             return true;
         }
         return false;
     }
-    
+
     /**
      * Tarkastaa että onko poistettavia. Jokaisen palikoiden poiston jälkeen
      * pudottaa palikat.
@@ -106,8 +116,25 @@ public class Discopeli {
      * Tarkastaa että täyttyvätkö pelin jatkumisen ehdot.
      *
      */
-    public void jatkuukoPeli() {
+    public boolean jatkuukoPeli() {
         this.gameOver = tarkastaja.liianKorkea();
+
+        if (this.gameOver) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void setPaivitettava(Paivitettava paivitettava) {
+        this.paivitettava = paivitettava;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        tarkastaLauta();
+        paivitettava.paivita();
+
     }
 
 }

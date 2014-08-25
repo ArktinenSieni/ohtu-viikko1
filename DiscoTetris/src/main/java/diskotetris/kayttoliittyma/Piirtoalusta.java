@@ -5,44 +5,50 @@ import diskotetris.logiikka.Lauta;
 import diskotetris.logiikka.Vari;
 import diskotetris.peli.Discopeli;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.util.Collections;
 import javax.swing.JPanel;
 
 /**
  * Piirtää pelilaudan palikat ja kursorin.
- * 
+ *
  * @author matti
  */
-public class Piirtoalusta extends JPanel implements Paivitettava{
+public class Piirtoalusta extends JPanel implements Paivitettava {
 
     private final Lauta pelilauta;
     private final Kursori kursori;
+    private final Discopeli peli;
 
     public Piirtoalusta(Discopeli peli) {
         super.setBackground(Color.black);
         this.pelilauta = peli.getPelilauta();
         this.kursori = peli.getKursori();
+        this.peli = peli;
     }
 
     /**
      * Kokoaa piirrettävät kohteet.
-     * 
-     * @param graphics 
+     *
+     * @param graphics
      */
     @Override
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         piirraPalikat(graphics);
         piirraKursori(graphics);
+        piirraPistealusta(graphics);
 
     }
-    
+
     /**
      * Piirtää vaaleanvihreän värisen kursorin kursori-metodin koordinaattien
      * mukaan.
+     *
      * @see diskotetris.logiikka.Kursori
-     * 
-     * @param graphics 
+     *
+     * @param graphics
      */
     public void piirraKursori(Graphics graphics) {
         graphics.setColor(Color.green);
@@ -57,9 +63,9 @@ public class Piirtoalusta extends JPanel implements Paivitettava{
     }
 
     /**
-     * Muuttaa annetun Väri-enumluokan Swingin luokkaan Color. 
-     * Palikoiden piirtämiseen vaadittava apumetodi.
-     * 
+     * Muuttaa annetun Väri-enumluokan Swingin luokkaan Color. Palikoiden
+     * piirtämiseen vaadittava apumetodi.
+     *
      * @param vari Annettu Vari
      * @return Swingin Color
      */
@@ -83,12 +89,13 @@ public class Piirtoalusta extends JPanel implements Paivitettava{
 
         return Color.black;
     }
-    
+
     /**
      * Piirtää palikat pelilaudalle. Ottaa koordinaatit lauta-luokan mukaan.
+     *
      * @see diskotetris.logiikka.Lauta
-     * 
-     * @param graphics 
+     *
+     * @param graphics
      */
     public void piirraPalikat(Graphics graphics) {
         for (int i = 0; i < pelilauta.maxX(); i++) {
@@ -96,7 +103,7 @@ public class Piirtoalusta extends JPanel implements Paivitettava{
                 graphics.setColor(variToColor(pelilauta.getPalikanVari(i, j)));
 
                 graphics.fill3DRect(i * 50, 600 - j * 50, 50, 50, true);
-                
+
             }
         }
     }
@@ -104,6 +111,36 @@ public class Piirtoalusta extends JPanel implements Paivitettava{
     @Override
     public void paivita() {
         super.repaint();
+    }
+
+    private void piirraPistealusta(Graphics graphics) {
+        graphics.setColor(Color.lightGray);
+        graphics.setFont(new Font("Helvetica", Font.BOLD, 18));
+        
+        graphics.fill3DRect(300, 0, 200, 200, true);
+        graphics.setColor(Color.black);
+        graphics.drawString("Pisteesi: " + peli.getLaskuri().getPisteet(), 320, 50);
+        graphics.drawString("+ " + peli.getLaskuri().getViimeisinLisatty(), 320, 150);
+        
+        if (peli.getLaskuri().getAika() < 10) {
+            graphics.setColor(Color.red);
+        } else {
+            graphics.setColor(Color.darkGray);
+        }
+        
+        graphics.fill3DRect(300, 200, 200, 200, true);
+        graphics.setColor(Color.black);
+        graphics.drawString("Aika: " + peli.getLaskuri().getAika(), 320, 300);
+        
+        graphics.setColor(Color.lightGray);
+        graphics.fill3DRect(300, 400, 200, 200, true);
+        
+        graphics.setColor(Color.black);
+        
+        for (int i = 0; i < peli.getPisteet().size() && i <= 10 ; i++) {
+            graphics.drawString("" + (i + 1) + ". " + peli.getPisteet().get(i), 320, 420 + 20 * i);
+            
+        }
     }
 
 }

@@ -59,3 +59,9 @@
 ###__22.8 09:00-11:00__
 
 * Ajastimen haltuunotto, peli on kutakuinkin reaaliaikainen!
+
+###__25.8 17:00-21:00__
+
+* Käyttöliittymää
+* Pistelogiikkaa
+* Ajastin kuntoon

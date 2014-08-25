@@ -7,7 +7,11 @@ import diskotetris.logiikka.Palikka;
 import diskotetris.logiikka.Tarkastaja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
@@ -24,17 +28,32 @@ public class Discopeli extends Timer implements ActionListener {
     private boolean pyoriiko;
     private boolean gameOver;
     private Paivitettava paivitettava;
+    private Pistelaskuri laskuri;
+    private Tiedostonlukija lukija;
+    private ArrayList<Integer> pisteet;
 
-    public Discopeli() {
+    public Discopeli() throws FileNotFoundException {
         super(1000, null);
         pelilauta = new Lauta();
         tarkastaja = new Tarkastaja(pelilauta);
         kursori = new Kursori(pelilauta);
-        pyoriiko = false;
         gameOver = false;
+        laskuri = new Pistelaskuri();
+        lukija = new Tiedostonlukija();
+        pisteet = lukija.luePisteet();
         generoiAloitus();
 
         addActionListener(this);
+    }
+
+    public Pistelaskuri getLaskuri() {
+        return laskuri;
+    }
+
+    public ArrayList<Integer> getPisteet() {
+        Collections.sort(pisteet);
+        Collections.reverse(pisteet);
+        return pisteet;
     }
 
     public Lauta getPelilauta() {
@@ -48,12 +67,13 @@ public class Discopeli extends Timer implements ActionListener {
     public Kursori getKursori() {
         return kursori;
     }
+    
 
     /**
      * Työntää yhden rivin ylös ottaen huomioon pelilaudan rajat.
      */
     public void tyonnaRivi() {
-        if (!tarkastaja.liianKorkea()) {
+        if (tarkastaja.saakoTyontaa()) {
             pelilauta.tyonnaRivi();
         }
     }
@@ -62,7 +82,7 @@ public class Discopeli extends Timer implements ActionListener {
      * Pelin alkaessa suoritettava toiminto. Peli alkaa aina kolmella
      * generoidulla rivillä.
      */
-    public void generoiAloitus() {
+    public void generoiAloitus(){
         pelilauta.alusta();
 
         for (int i = 0; i < 3; i++) {
@@ -72,7 +92,9 @@ public class Discopeli extends Timer implements ActionListener {
 
         pelilauta.generoiRivi();
 
-        this.pyoriiko = true;
+        this.gameOver = false;
+
+        laskuri.aloitusTilanne();
     }
 
     /**
@@ -92,6 +114,8 @@ public class Discopeli extends Timer implements ActionListener {
         ArrayList<Palikka> poistettavat = this.tarkastaja.tarkastaLauta();
 
         if (poistettavat.size() > 0) {
+            laskuri.laskePisteet(poistettavat.size());
+
             for (Palikka palikka : poistettavat) {
                 pelilauta.poistaPalikka(palikka);
             }
@@ -118,6 +142,9 @@ public class Discopeli extends Timer implements ActionListener {
      */
     public boolean jatkuukoPeli() {
         this.gameOver = tarkastaja.liianKorkea();
+        if (laskuri.getAika() == 0) {
+            this.gameOver = true;
+        }
 
         if (this.gameOver) {
             return false;
@@ -129,11 +156,21 @@ public class Discopeli extends Timer implements ActionListener {
     public void setPaivitettava(Paivitettava paivitettava) {
         this.paivitettava = paivitettava;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        tarkastaLauta();
-        paivitettava.paivita();
+        if (jatkuukoPeli()) {
+            tarkastaLauta();
+            paivitettava.paivita();
+            laskuri.aikaKuluu();
+
+        } else {
+            pisteet.add(laskuri.getPisteet());
+            lukija.tallennaEnnatykset(pisteet);
+
+            this.generoiAloitus();
+
+        }
 
     }
 

@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.FileNotFoundException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +22,7 @@ public class Kayttoliittyma implements Runnable {
     private final Discopeli peli;
     private final Piirtoalusta piirtoalusta;
 
-    public Kayttoliittyma() {
+    public Kayttoliittyma() throws FileNotFoundException {
         this.peli = new Discopeli();
         this.piirtoalusta = new Piirtoalusta(this.peli);
     }
@@ -60,10 +61,6 @@ public class Kayttoliittyma implements Runnable {
      * @param container Pelin ikkuna
      */
     private void luoKomponentit(Container container) {
-        JPanel testiTiedot = luoPelitiedot();
-
-        container.add(testiTiedot, BorderLayout.EAST);
-
         container.add(piirtoalusta);
 
         frame.addKeyListener(new NappaimistonKuuntelija(peli, piirtoalusta));
@@ -80,8 +77,8 @@ public class Kayttoliittyma implements Runnable {
 
         panel.setPreferredSize(new Dimension(200, 600));
 
-        JLabel aika = new JLabel("Nuolinäppäimet");
-        JLabel taso = new JLabel("Space: vaihto");
+        JLabel aika = new JLabel("" + peli.getLaskuri().getPisteet());
+        JLabel taso = new JLabel("" + peli.getLaskuri().getAika());
         JLabel pisteet = new JLabel("S: Uusi rivi");
 
         panel.add(aika);

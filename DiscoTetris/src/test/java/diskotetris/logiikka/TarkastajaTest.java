@@ -1,4 +1,4 @@
-package sienimetsa.discotetris.logiikka;
+package diskotetris.logiikka;
 
 import diskotetris.logiikka.Tarkastaja;
 import diskotetris.logiikka.Palikka;

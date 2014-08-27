@@ -22,8 +22,8 @@ public class Kayttoliittyma implements Runnable {
     private final Discopeli peli;
     private final Piirtoalusta piirtoalusta;
 
-    public Kayttoliittyma() throws FileNotFoundException {
-        this.peli = new Discopeli();
+    public Kayttoliittyma(Discopeli peli) throws FileNotFoundException {
+        this.peli = peli;
         this.piirtoalusta = new Piirtoalusta(this.peli);
     }
     

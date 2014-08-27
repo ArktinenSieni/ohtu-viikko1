@@ -1,5 +1,5 @@
 
-package sienimetsa.discotetris.logiikka;
+package diskotetris.logiikka;
 
 import diskotetris.logiikka.Kursori;
 import diskotetris.logiikka.Palikka;
@@ -15,12 +15,12 @@ import static org.junit.Assert.*;
  *
  * @author mcraty
  */
-public class kursoriTest {
+public class KursoriTest {
     public Kursori testiKursori;
     public Lauta testiLauta;
     
     
-    public kursoriTest() {
+    public KursoriTest() {
     }
     
     @BeforeClass

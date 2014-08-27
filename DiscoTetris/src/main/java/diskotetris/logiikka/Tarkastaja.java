@@ -118,20 +118,6 @@ public class Tarkastaja {
         return false;
     }
     
-    /**
-     * Metodi pelin työntämis-metodia varten.
-     * @see diskotetris.peli.Discopeli
-     * 
-     * @return 
-     */
-    public boolean saakoTyontaa() {
-        for (int i = 0; i < this.pelilauta.maxX(); i++) {
-            if (pelilauta.getPalikanVari(i, pelilauta.maxY() - 2) != Vari.TYHJA) {
-                return false;
-            }
-        }
-        
-        return true;
-    }
+    
 
 }

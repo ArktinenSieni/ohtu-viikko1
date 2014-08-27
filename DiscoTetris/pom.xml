@@ -37,12 +37,35 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
+                <configuration>
+                    <instrumentation>
+                        <includes>
+                            <include>diskotetris.logiikka/*.class</include>
+                            <include>diskotetris.peli/*.class</include>
+                        </includes>
+                    </instrumentation>
+                </configuration>
                 <version>2.6</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
             </plugin>
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>0.30</version>
+                <configuration>
+                    <targetClasses>
+                        <param>diskotetris.logiikka.*</param>
+                        <param>diskotetris.peli.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>diskotetris.logiikka.*</param>
+                        <param>diskotetris.peli.*</param>
+                    </targetTests>
+                </configuration>
             </plugin>
         </plugins>
     </build>

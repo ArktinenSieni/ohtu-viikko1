@@ -1,6 +1,8 @@
 package diskotetris;
 
 import diskotetris.kayttoliittyma.Kayttoliittyma;
+import diskotetris.peli.Discopeli;
+import java.io.FileNotFoundException;
 import javax.swing.SwingUtilities;
 
 
@@ -10,8 +12,8 @@ import javax.swing.SwingUtilities;
  */
 public class App {
 
-    public static void main(String[] args) {
-        Kayttoliittyma GUI = new Kayttoliittyma();
+    public static void main(String[] args) throws FileNotFoundException {
+        Kayttoliittyma GUI = new Kayttoliittyma(new Discopeli());
         SwingUtilities.invokeLater(GUI);
         
         while (GUI.getPaivitettava() == null) {

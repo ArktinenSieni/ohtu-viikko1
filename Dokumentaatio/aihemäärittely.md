@@ -2,22 +2,18 @@
 
 ##__Aihe:__ 
  Tarkoituksena tuottaa pulmapeli [Tetris Attackin](http://www.geek-pride.co.uk/wp-content/uploads/2014/03/tetris-attack-04.png) innoittamana. 
-Pelissä nousee ruudukon alalaidasta riveittäin erivärisiä kuutoita. Pelaajan tehtävänä on vaihtaa kahden palikan paikkaa niin,
-että saman väriset tuottavat vähintään kolmen vaaka- tai pystyrivejä. Tämän tapahtuessa pelaaja saa pisteitä. Lisäpisteitä saa kun yhdistelmään
-kuuluu useampi kuin vain kolme palikkaa, tai kun palikoiden poistaminen saa aikaan toisen vähintään kolmen yhdistelmän. 
-Pelaajalla on käytettävissä vielä toistaiseksi määrittelemätön määrä aikaa, jona aikana hän saa yhdistelmiä tehdä. Pisteiden lisäksi pelaaja 
-saa myös lisää aikaa. Mitä enemmän aikaa kuluu, sitä tiuhempaan tahtiin palikoita nousee ruudukon alalaidasta. Peli päättyy joko ajan 
-loppumiseen, tai kun palikat saavuttavat ruudukon ylälaidan. Pelin loputtua pelaaja näkee pistemääränsä, joka asetetaan highscore listaan jos
-pistemäärä on tarpeeksi korkea.
+Pelissä nostetaan ruudukon alalaidasta riveittäin erivärisiä kuutoita. Pelaajan tehtävänä on vaihtaa kahden palikan paikkaa niin,
+että saman väriset tuottavat vähintään kolmen kuution vaaka- tai pystyrivejä. Tämän tapahtuessa pelaaja saa pisteitä ja lisää aikaa. Poistattaessa
+onnistuneesti 3-4 kuutiota, saa pelaaja 100 pistettä kuutiota kohden, ja kaksi lisäsekuntia. 5-6 kuutiota, 300/kuutio ja kolme sekuntia, ja 
+näitä suuremmissa 500/kuutio ja 5 lisäsekuntia. Pelaajalla on käytettävissä pelin alkaessa minuutti aikaa. Pelaaja voi nostaa rivi kerrallaan
+kuutioita. Rivin nostamisessa on sanktiona sekunnin menettäminen, ja 100 pisteen sakko. Peli päättyy ajan loppuessa tai jos pelaaja vahingossa
+nostaa kuutioita yli pelialueen. Pelin päättyessä pisteet lisätään listaan, ja peli alkaa alusta.
 
 ###__Käyttäjät:__
  Pelaaja
 
 ###__Pelaajan toiminnot:__
-* Pelin aloittaminen
-  * Palikoiden paikan vaihtaminen
-  * Uuden rivin työntäminen
-* Highscorelistan tarkastelu pelin päätyttyä
-* Pelin pausettaminen
+* Palikoiden paikan vaihtaminen
+* Palikkarivin nostaminen
 
 

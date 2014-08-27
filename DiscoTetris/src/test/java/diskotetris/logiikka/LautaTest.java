@@ -1,5 +1,5 @@
 
-package sienimetsa.discotetris.logiikka;
+package diskotetris.logiikka;
 
 import diskotetris.logiikka.Palikka;
 import diskotetris.logiikka.Lauta;
@@ -15,11 +15,11 @@ import static org.junit.Assert.*;
  *
  * @author mcraty
  */
-public class lautaTest {
+public class LautaTest {
 
     public Lauta testiLauta;
 
-    public lautaTest() {
+    public LautaTest() {
 
     }
 

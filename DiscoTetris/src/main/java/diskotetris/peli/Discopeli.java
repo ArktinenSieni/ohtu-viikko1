@@ -67,25 +67,24 @@ public class Discopeli extends Timer implements ActionListener {
     public Kursori getKursori() {
         return kursori;
     }
-    
 
     /**
-     * Työntää yhden rivin ylös ottaen huomioon pelilaudan rajat.
+     * Työntää yhden rivin ylös ottamatta huomioon pelikentän rajoja.
      */
     public void tyonnaRivi() {
-        if (tarkastaja.saakoTyontaa()) {
             pelilauta.tyonnaRivi();
-        }
+            laskuri.aikaKuluu();
+            laskuri.muutaPisteita(-100);
     }
 
     /**
      * Pelin alkaessa suoritettava toiminto. Peli alkaa aina kolmella
      * generoidulla rivillä.
      */
-    public void generoiAloitus(){
+    public void generoiAloitus() {
         pelilauta.alusta();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             pelilauta.generoiRivi();
             pelilauta.tyonnaRivi();
         }
@@ -104,6 +103,7 @@ public class Discopeli extends Timer implements ActionListener {
     public void uusiRivi() {
         pelilauta.tyonnaRivi();
         pelilauta.generoiRivi();
+
     }
 
     /**

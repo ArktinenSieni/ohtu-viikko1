@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class Lauta {
 
-    private Palikka[][] pelilauta;
+    private final Palikka[][] pelilauta;
     final int x;
     final int y;
 

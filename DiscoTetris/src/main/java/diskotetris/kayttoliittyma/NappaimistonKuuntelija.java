@@ -47,7 +47,9 @@ public class NappaimistonKuuntelija implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             kursori.vaihda();            
         } else if (e.getKeyCode() == KeyEvent.VK_S) {
-            peli.tyonnaRivi();
+            peli.getPelilauta().tyonnaRivi();
+        } else if (e.getKeyCode() == KeyEvent.VK_R) {
+            peli.generoiAloitus();
         }
 
         paivitettava.paivita();

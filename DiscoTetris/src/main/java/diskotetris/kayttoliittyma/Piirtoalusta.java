@@ -130,7 +130,12 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
         
         graphics.fill3DRect(300, 200, 200, 200, true);
         graphics.setColor(Color.black);
-        graphics.drawString("Aika: " + peli.getLaskuri().getAika(), 320, 300);
+        graphics.drawString("Aika: " + peli.getLaskuri().getAika(), 310, 250);
+        graphics.drawString("Space = vaihda", 310, 290);
+        graphics.drawString("palikoiden paikkaa", 310, 310);
+        graphics.drawString("S = työnnä rivi", 310, 330);
+        graphics.drawString("R = uusi peli", 310, 350);
+        
         
         graphics.setColor(Color.lightGray);
         graphics.fill3DRect(300, 400, 200, 200, true);

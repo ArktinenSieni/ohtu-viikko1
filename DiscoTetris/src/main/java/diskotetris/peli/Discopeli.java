@@ -68,13 +68,38 @@ public class Discopeli extends Timer implements ActionListener {
         return kursori;
     }
 
+    
+    
     /**
-     * Työntää yhden rivin ylös ottamatta huomioon pelikentän rajoja.
+     * Työntää tietyin aikavälein rivejä ylöspäin automaattisesti.
      */
-    public void tyonnaRivi() {
-            pelilauta.tyonnaRivi();
-            laskuri.aikaKuluu();
-            laskuri.muutaPisteita(-100);
+    public void peliTyontaaRivin() {
+        if (laskuri.getKulunutAika() <= 30) {
+            if (laskuri.getKulunutAika() % 10 == 0) {
+                pelilauta.tyonnaRivi();
+                kursori.ylos();
+            }
+        } else if (laskuri.getKulunutAika() > 30 && laskuri.getKulunutAika() <= 60) {
+            if (laskuri.getKulunutAika() % 8 == 0) {
+                pelilauta.tyonnaRivi();
+                kursori.ylos();
+            }
+        } else if (laskuri.getKulunutAika() > 60 && laskuri.getKulunutAika() <= 90) {
+            if (laskuri.getKulunutAika() % 6 == 0) {
+                pelilauta.tyonnaRivi();
+                kursori.ylos();
+            }
+        } else if (laskuri.getKulunutAika() > 90 && laskuri.getKulunutAika() <= 120) {
+            if (laskuri.getKulunutAika() % 4 == 0) {
+                pelilauta.tyonnaRivi();
+                kursori.ylos();
+            }
+        } else if (laskuri.getKulunutAika() > 120) {
+            if (laskuri.getKulunutAika() % 2 == 0) {
+                pelilauta.tyonnaRivi();
+                kursori.ylos();
+            }
+        }
     }
 
     /**
@@ -84,7 +109,7 @@ public class Discopeli extends Timer implements ActionListener {
     public void generoiAloitus() {
         pelilauta.alusta();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             pelilauta.generoiRivi();
             pelilauta.tyonnaRivi();
         }
@@ -94,16 +119,6 @@ public class Discopeli extends Timer implements ActionListener {
         this.gameOver = false;
 
         laskuri.aloitusTilanne();
-    }
-
-    /**
-     * Tuottaa uuden rivin. Suoritetaan joko pelaajan aloitteesta, tai tietyn
-     * aikamäärän kuluessa.
-     */
-    public void uusiRivi() {
-        pelilauta.tyonnaRivi();
-        pelilauta.generoiRivi();
-
     }
 
     /**
@@ -163,6 +178,7 @@ public class Discopeli extends Timer implements ActionListener {
             tarkastaLauta();
             paivitettava.paivita();
             laskuri.aikaKuluu();
+            peliTyontaaRivin();
 
         } else {
             pisteet.add(laskuri.getPisteet());

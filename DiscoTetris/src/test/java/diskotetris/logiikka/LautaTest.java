@@ -95,6 +95,25 @@ public class LautaTest {
         assertTrue(testiLauta.getLauta()[0][1].getVari() != Vari.TYHJA);
     }
     
+    @Test
+    public void painovoima() {
+        for (int i = 0; i < testiLauta.maxX(); i++) {
+            testiLauta.getPalikka(i, 3).setVari(testiLauta.arvoVari());
+        }
+        
+        for (int i = 0; i < testiLauta.maxX(); i++) {
+            assertFalse(testiLauta.getPalikanVari(i, 3) == Vari.TYHJA);
+            
+        }
+        
+        testiLauta.painovoima();
+        
+        for (int i = 0; i < testiLauta.maxX(); i++) {
+            assertFalse(testiLauta.getPalikanVari(i, 1) == Vari.TYHJA);
+            assertTrue(testiLauta.getPalikanVari(i, 3) == Vari.TYHJA);
+        }
+    }
+    
     
     
 

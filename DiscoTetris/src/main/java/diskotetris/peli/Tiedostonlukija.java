@@ -29,10 +29,9 @@ public class Tiedostonlukija {
     }
 
     /**
-     * Lukee pistetiedoston sisällön palauttaen
-     *
-     * @return palauttaa pisteet ArrayListissä
-     * @throws FileNotFoundException
+     * Lukee pistetiedoston sisällön.
+     * @return pisteet
+     * @throws FileNotFoundException Hups
      */
     public ArrayList<Integer> luePisteet() throws FileNotFoundException {
         ArrayList<Integer> pisteet = new ArrayList<Integer>();
@@ -46,9 +45,8 @@ public class Tiedostonlukija {
     }
 
     /**
-     * Tallentaa kymmenen parasta pistemäärää.
-     *
-     * @param pisteet
+     * Tallentaa pisteet
+     * @param pisteet Pelin käyttämät pisteet
      */
     public void tallennaEnnatykset(ArrayList<Integer> pisteet) {
         FileWriter kirjoittaja;

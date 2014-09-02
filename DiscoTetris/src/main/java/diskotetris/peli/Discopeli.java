@@ -50,6 +50,10 @@ public class Discopeli extends Timer implements ActionListener {
         return laskuri;
     }
 
+    /**
+     * Palauttaa piste-ennätykset tekstitiedostosta.
+     * @return Tallennetut pisteet
+     */
     public ArrayList<Integer> getPisteet() {
         Collections.sort(pisteet);
         Collections.reverse(pisteet);
@@ -124,6 +128,8 @@ public class Discopeli extends Timer implements ActionListener {
     /**
      * Poistaa kaikki vähintään kolmen pituiset yhdistelmät kerralla. Lisäksi
      * ilmoittaa metodin kutsujalle, että tapahtuiko poistoa.
+     * 
+     * @return Poistettiinko mitään
      */
     public boolean poistaYhdistelmat() {
         ArrayList<Palikka> poistettavat = this.tarkastaja.tarkastaLauta();
@@ -152,8 +158,8 @@ public class Discopeli extends Timer implements ActionListener {
     }
 
     /**
-     * Tarkastaa että täyttyvätkö pelin jatkumisen ehdot.
-     *
+     * Tarkastaa pelin jatkumisen ehdot.
+     * @return Lopputulos
      */
     public boolean jatkuukoPeli() {
         this.gameOver = tarkastaja.liianKorkea();

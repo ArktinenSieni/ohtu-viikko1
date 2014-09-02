@@ -2,7 +2,7 @@ package diskotetris.logiikka;
 
 /**
  * Luokka yksittäisen palikan luomiselle.
- * @see diskotetris.logiikka.lauta
+ * @see diskotetris.logiikka.Lauta
  * 
  * @author mcraty
  * 

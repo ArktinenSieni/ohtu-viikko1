@@ -1,9 +1,5 @@
 package diskotetris.logiikka;
 
-import diskotetris.logiikka.Tarkastaja;
-import diskotetris.logiikka.Palikka;
-import diskotetris.logiikka.Lauta;
-import diskotetris.logiikka.Vari;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -115,6 +111,8 @@ public class TarkastajaTest {
         
         assertTrue(lista.size() >= 6);
     }
+    
+    
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

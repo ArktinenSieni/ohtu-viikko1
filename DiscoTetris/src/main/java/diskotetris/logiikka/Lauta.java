@@ -62,7 +62,7 @@ public class Lauta {
      *
      * @return Palauttaa arvotun Värin.
      */
-    private Vari arvoVari() {
+    public Vari arvoVari() {
         Vari[] varit = {Vari.KELTAINEN, Vari.PUNAINEN, Vari.SININEN, Vari.VALKOINEN, Vari.VIOLETTI};
 
         Random arpoja = new Random();
@@ -125,8 +125,8 @@ public class Lauta {
      * Pudotetaan yksittäinen palikka.
      * Valitaan koordinaattien perusteella. Painovoima-metodin apumetodi.
      * 
-     * @param x
-     * @param y 
+     * @param x Leveys-koordinaatti
+     * @param y Pituus-koordinaatti
      */
     public void pudotaPalikka(int x, int y) {
         if (y > 1 && getPalikanVari(x, y - 1) == Vari.TYHJA) {
@@ -146,22 +146,11 @@ public class Lauta {
             }
         }
     }
-
-    /**
-     * Palikan "tyhjentäminen" koordinaattien mukaan.
-     * Täytyy vielä punnita hyödyllisyyttä.
-     * 
-     * @param x
-     * @param y 
-     */
-    public void poistaPalikka(int x, int y) {
-        this.pelilauta[x][y].setVari(Vari.TYHJA);
-    }
     
     /**
      * Palikan "tyhjentäminen" annetun palikan mukaan.
      * 
-     * @param palikka 
+     * @param palikka Poistettava palikka
      */
     public void poistaPalikka(Palikka palikka) {
         palikka.setVari(Vari.TYHJA);

@@ -58,16 +58,6 @@ public class Pistelaskuri {
     }
     
     /**
-     * Vähentää tai lisää pisteitä. Tarkoitettu palikoiden työntämisestä
-     * aihetuvaan sakkoon.
-     * 
-     * @param pistemaara 
-     */
-    public void muutaPisteita(int pistemaara) {
-        this.pisteet += pistemaara;
-    }
-
-    /**
      * Laskee saadun pistemäärän ja saadun lisäajan. 
      *
      * @param poistetut poistettavien palikoiden lukumäärä

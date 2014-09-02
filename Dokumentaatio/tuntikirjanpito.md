@@ -65,3 +65,8 @@
 * Käyttöliittymää
 * Pistelogiikkaa
 * Ajastin kuntoon
+
+###__2.9 16:30-19:00__
+
+* Unohtui näköjään muutamalta päivältä tuntikirjanpitopäivittää
+* Peli on saavuttanut asettamani tavoitteet viimeistä deadlinea varten

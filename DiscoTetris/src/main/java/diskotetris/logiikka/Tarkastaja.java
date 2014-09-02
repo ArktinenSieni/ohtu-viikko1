@@ -20,8 +20,8 @@ public class Tarkastaja {
     /**
      * Etsii palikat alhaalta ylös, jotka ovat samanvärisiä lähtöpalikan kanssa.
      *
-     * @param x
-     * @param y
+     * @param x Palikan vaaka-koordinaatti
+     * @param y Palikan pysty-koordinaatti
      * @return Samanväriset palikat listassa.
      */
     public ArrayList<Palikka> tarkastaYlos(int x, int y) {
@@ -45,8 +45,8 @@ public class Tarkastaja {
      * Etsii palikat vasemmalta oikealle, jotka ovat samanvärisiä lähtöpalikan
      * kanssa.
      *
-     * @param x
-     * @param y
+     * @param x Palikan vaaka-koordinaatti
+     * @param y Palikan pysty-koordinaatti
      * @return Samanväriset palikat listassa.
      */
     public ArrayList<Palikka> tarkastaOikea(int x, int y) {
@@ -70,7 +70,7 @@ public class Tarkastaja {
      * ainoastaan jos kyseinen palikka jo ei ole listassa, ja kun vierekkäisiä
      * samanvärisiä on vähintään kolme.
      *
-     * @return
+     * @return Poistettavat palikat
      */
     public ArrayList<Palikka> tarkastaLauta() {
         ArrayList<Palikka> poistettavat = new ArrayList<Palikka>();
@@ -106,7 +106,7 @@ public class Tarkastaja {
      * Tarkastaa korkeimman rivin tilan. Käytetään pelin jatkumista
      * tarkastaessa.
      *
-     * @return
+     * @return Tulos
      */
     public boolean liianKorkea() {
         for (int i = 0; i < this.pelilauta.maxX(); i++) {

@@ -31,7 +31,7 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     /**
      * Kokoaa piirrettävät kohteet.
      *
-     * @param graphics
+     * @param graphics Käyttöliittymän tarjoama alusta
      */
     @Override
     public void paintComponent(Graphics graphics) {
@@ -48,7 +48,7 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
      *
      * @see diskotetris.logiikka.Kursori
      *
-     * @param graphics
+     * @param graphics Piirtoalustalta tulleet grafiikat
      */
     public void piirraKursori(Graphics graphics) {
         graphics.setColor(Color.green);
@@ -95,7 +95,7 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
      *
      * @see diskotetris.logiikka.Lauta
      *
-     * @param graphics
+     * @param graphics Piirtoalustalta saadut grafiikat
      */
     public void piirraPalikat(Graphics graphics) {
         for (int i = 0; i < pelilauta.maxX(); i++) {

@@ -32,7 +32,7 @@ public class NappaimistonKuuntelija implements KeyListener {
     /**
      * Määrittelee kunkin näppäimistön napin painalluksen seuraukset.
      * 
-     * @param e 
+     * @param e Painettu nappi
      */
     @Override
     public void keyPressed(KeyEvent e) {

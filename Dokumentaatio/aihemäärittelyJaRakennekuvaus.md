@@ -1,4 +1,4 @@
-#__ Disco Tetris__
+#__Disco Tetris__
 
 ##__Aihe:__ 
  Tarkoituksena tuottaa pulmapeli [Tetris Attackin](http://www.geek-pride.co.uk/wp-content/uploads/2014/03/tetris-attack-04.png) innoittamana. 

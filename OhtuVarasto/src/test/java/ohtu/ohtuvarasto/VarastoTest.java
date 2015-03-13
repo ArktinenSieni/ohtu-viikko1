@@ -105,6 +105,6 @@ public class VarastoTest {
     public void varastostaOtetaanEnintäänSaldonVerran() {
         varasto.lisaaVarastoon(5);
         
-        assertEquals(4, varasto.otaVarastosta(8), vertailuTarkkuus);
+        assertEquals(5, varasto.otaVarastosta(8), vertailuTarkkuus);
     }
 }
